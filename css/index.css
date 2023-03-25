@@ -3565,6 +3565,7 @@ h1.page-title + .tag-cloud-list {
   position: absolute;
   right: 0;
   display: none;
+  margin-top: 0;
   padding: 0;
   width: max-content;
   border-radius: 5px;
