@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>java | YunisTo</title><meta name="author" content="顶风作案"><meta name="copyright" content="顶风作案"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第一单元 java基础1. java语言概述1.1  java介绍 121995年推出   美国Sun公司2009年Oracle甲骨文公司收购Sun公司，并于2011发布Java 7.0版本  1.2 java语言能够做什么 123常见的互联网程序比如天猫、京东、物流系统、网银系统等，以及服 务器后台处理大数据的存储、查询、数据挖掘等也有很多应用。  2. 计算机基础知识2.1 二进制 11字节（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java">
+<meta property="og:url" content="http://example.com/2023/03/26/day01%20java%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="YunisTo">
+<meta property="og:description" content="第一单元 java基础1. java语言概述1.1  java介绍 121995年推出   美国Sun公司2009年Oracle甲骨文公司收购Sun公司，并于2011发布Java 7.0版本  1.2 java语言能够做什么 123常见的互联网程序比如天猫、京东、物流系统、网银系统等，以及服 务器后台处理大数据的存储、查询、数据挖掘等也有很多应用。  2. 计算机基础知识2.1 二进制 11字节（">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2023-03-26T06:50:37.140Z">
+<meta property="article:modified_time" content="2023-03-26T06:54:49.073Z">
+<meta property="article:author" content="顶风作案">
+<meta property="article:tag" content="java基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/03/26/day01%20java%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'java',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-26 14:54:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="YunisTo"><span class="site-name">YunisTo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">java</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-26T06:50:37.140Z" title="发表于 2023-03-26 14:50:37">2023-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-26T06:54:49.073Z" title="更新于 2023-03-26 14:54:49">2023-03-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="java"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="第一单元-java基础"><a href="#第一单元-java基础" class="headerlink" title="第一单元 java基础"></a>第一单元 java基础</h1><h3 id="1-java语言概述"><a href="#1-java语言概述" class="headerlink" title="1. java语言概述"></a>1. java语言概述</h3><p><strong>1.1  java介绍</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1995</span>年推出   美国Sun公司</span><br><span class="line"><span class="number">2009</span>年Oracle甲骨文公司收购Sun公司，并于<span class="number">2011</span>发布Java <span class="number">7.0</span>版本</span><br></pre></td></tr></table></figure>
+
+<p><strong>1.2 java语言能够做什么</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">常见的互联网程序比如天猫、京东、物流系统、网银系统等，以及服 </span><br><span class="line"></span><br><span class="line">务器后台处理大数据的存储、查询、数据挖掘等也有很多应用。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-计算机基础知识"><a href="#2-计算机基础知识" class="headerlink" title="2. 计算机基础知识"></a>2. 计算机基础知识</h3><p><strong>2.1 二进制</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>字节（<span class="type">byte</span>） = 8bit(比特位)</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.2字节</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">字节：字节是我们常见的计算机中最小存储单元</span><br><span class="line"></span><br><span class="line">单位转换：</span><br><span class="line"><span class="number">1024</span> B =<span class="number">1</span> KB </span><br><span class="line"><span class="number">1024</span> KB =<span class="number">1</span> MB </span><br><span class="line"><span class="number">1024</span> MB =<span class="number">1</span> GB </span><br><span class="line"><span class="number">1024</span> GB = <span class="number">1</span> TB </span><br></pre></td></tr></table></figure>
+
+<p><strong>2.3常用dos命令</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Win+R   输入cmd</span><br><span class="line"></span><br><span class="line">盘符切换：               盘符名:</span><br><span class="line">查看当前文件夹：           dir</span><br><span class="line">进入文件夹命令:            cd 文件夹名</span><br><span class="line">退出文件夹命令:            cd..</span><br><span class="line">退出到磁盘根目录：          cd\</span><br><span class="line">清屏：                    cls</span><br><span class="line">退出：                    exit</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-JDK-JRE-JVM的介绍"><a href="#3-JDK-JRE-JVM的介绍" class="headerlink" title="3. JDK,JRE,JVM的介绍"></a>3. JDK,JRE,JVM的介绍</h3><p><strong>3.1  什么是JDK:red_circle:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Java开发工具包</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.2  什么是JRE</strong>:red_circle:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Java运行环境</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.3  什么是JVM</strong>:red_circle:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Java虚拟机</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.4  三者关系</strong>:red_circle:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JDK包含JRE包含JVM</span><br><span class="line"></span><br><span class="line">JDK=JRE+开发工具</span><br><span class="line">JRE=JVM+核心类库</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img%5C1.png"></p>
+<p><strong>3.5  java跨平台特性:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">JVM：Java虚拟机</span><br><span class="line"></span><br><span class="line">注意：Java语言是先编译后运行的语言。</span><br><span class="line"></span><br><span class="line">Java跨平台性：Java程序可以在任意操作系统上运行，依赖于JVM。写一次，到处运行。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-JDK9安装"><a href="#4-JDK9安装" class="headerlink" title="4. JDK9安装"></a>4. JDK9安装</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">参考讲义</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-环境变量配置-red-circle"><a href="#5-环境变量配置-red-circle" class="headerlink" title="5. 环境变量配置   :red_circle:"></a>5. 环境变量配置   :red_circle:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">作用：在各个文件夹下都能使用JDK</span><br><span class="line">步骤：<span class="number">1.</span>找到JDK的安装路径 复制下来。</span><br><span class="line">      <span class="number">2.</span>此电脑-&gt;右键-&gt;属性-&gt;高级系统设置-&gt;环境变量-&gt;系统变量</span><br><span class="line">      <span class="number">3.</span>新建-&gt;JAVA_HOME-&gt; 安装路径复制过来</span><br><span class="line">      <span class="number">4.</span>Path-&gt;新建-&gt;%JAVA_HOME%\bin  新建-&gt;%JAVA_HOME%\jre\bin</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-第一个程序HelloWorld"><a href="#6-第一个程序HelloWorld" class="headerlink" title="6. 第一个程序HelloWorld"></a>6. 第一个程序HelloWorld</h3><p><strong>6.1 开发java程序的步骤</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>创建源文件  编写源代码</span><br><span class="line"><span class="number">2.</span>编译器编译源代码 生成字节码文件（.class）</span><br><span class="line"><span class="number">3.</span>由JVM运行出结果</span><br></pre></td></tr></table></figure>
+
+<p><strong>6.2 编写java源程序</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>:权限修饰符</span><br><span class="line">class:类</span><br><span class="line"><span class="keyword">static</span>:静态的</span><br><span class="line"><span class="keyword">void</span>:无返回值类型</span><br><span class="line">String[]:字符串类型的数组</span><br><span class="line">args:参数名</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>  <span class="keyword">class</span>  <span class="title class_">Test</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">          System.out.println(<span class="string">&quot;HelloWord&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>6.3 java程序的编译与运行:red_circle:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">编译：javac 文件名</span><br><span class="line">运行：java 类名</span><br></pre></td></tr></table></figure>
+
+<p><strong>6.4 总结常见错误</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">编写到运行的步骤：</span><br><span class="line">   <span class="number">1.</span>新建txt文件</span><br><span class="line">   <span class="number">2.</span>文件另存为ANSI</span><br><span class="line">   <span class="number">3.</span>编写代码</span><br><span class="line">   <span class="number">4.</span>重命名改后缀名.java</span><br><span class="line">   <span class="number">5.</span>windows+R 输入cmd</span><br><span class="line">   <span class="number">6.</span>javac 文件名+后缀</span><br><span class="line">   <span class="number">7.</span>java 类名</span><br><span class="line">   </span><br><span class="line">常见问题：</span><br><span class="line">   <span class="number">1</span>).非法字符:符号的中英文</span><br><span class="line">   <span class="number">2</span>).大小写:严格区分大小写</span><br><span class="line">   <span class="number">3</span>).括号:成对出现</span><br><span class="line">   <span class="number">4</span>).缺少分号</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-添加注释"><a href="#7-添加注释" class="headerlink" title="7. 添加注释"></a>7. 添加注释</h3><p><strong>7.1 注释的意义</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注释：就是对代码的解释和说明。</span><br></pre></td></tr></table></figure>
+
+<p><strong>7.2 注释的分类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">单行注释：<span class="comment">//注释内容</span></span><br><span class="line">多行注释：<span class="comment">/*注释内容*/</span></span><br><span class="line">文档注释：<span class="comment">/**注释内容*/</span>  一般用来生成API的　一般不使用</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-关键字"><a href="#8-关键字" class="headerlink" title="8. 关键字"></a>8. 关键字</h3><p><strong>8.1 什么是关键字</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">关键字：被Java语言赋予特定含义的单词。</span><br><span class="line">  例如：<span class="keyword">public</span> 权限修饰符  class 类   <span class="keyword">static</span> 静态的     <span class="keyword">void</span> 无返回值类型</span><br></pre></td></tr></table></figure>
+
+<p><strong>8.2 关键字的特点</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">全部小写</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-标识符"><a href="#9-标识符" class="headerlink" title="9. 标识符"></a>9. 标识符</h3><p><strong>9.1 什么是标识符</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">标识符：类 方法 变量 包 常量起名字。</span><br></pre></td></tr></table></figure>
+
+<p><strong>9.2 标识符的命名规则及规范 :red_circle:</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">组成：<span class="number">26</span>个大写字母 <span class="number">26</span>个小写字母  <span class="number">0</span>-<span class="number">9</span>数字  $和_     <span class="number">64</span>个元素 </span><br><span class="line">特点： 不能以数字开头</span><br><span class="line">      不能是关键字</span><br><span class="line"></span><br><span class="line">命名规则：</span><br><span class="line">   类：首字母大写（大驼峰式）  例如：Student   StudentTest</span><br><span class="line">   变量名：由一个单词组成，全部小写。多个单词组成从第二个单词开始首字母大写。(小驼峰式) 例如：sum  getSum</span><br><span class="line">   方法名：由一个单词组成，全部小写。多个单词组成从第二个单词开始首字母大写。(小驼峰式) </span><br><span class="line">             例如：sum() getSum()</span><br><span class="line">   常量名：每个单词的每一个字母都要大写。多个单词之间用_连接    例如：SUM  GET_SUM</span><br><span class="line">   包名： 全部小写</span><br><span class="line">          单级包：例如：demo     test</span><br><span class="line">          多级包：一般用公司域名的反写  cn.doyens.demo</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-常量"><a href="#10-常量" class="headerlink" title="10.常量"></a>10.常量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">常量：是指在Java程序中固定不变的数据。</span><br><span class="line">分类：字面值常量  </span><br><span class="line">           整数常量     例如：<span class="number">3</span>，-<span class="number">10</span></span><br><span class="line">           小数常量     例如：<span class="number">3.14</span>  -<span class="number">3.14</span></span><br><span class="line">           字符常量     例如：<span class="string">&#x27;a&#x27;</span>，<span class="string">&#x27; &#x27;</span>，<span class="string">&#x27;涵&#x27;</span>  单引号中必须加上一个元素</span><br><span class="line">           字符串常量   例如：<span class="string">&quot;&quot;</span>, <span class="string">&quot;旧居哦i就&quot;</span></span><br><span class="line">           布尔常量     例如：<span class="literal">true</span> <span class="literal">false</span></span><br><span class="line">           空常量       例如: <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">      自定义常量</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">练习：</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Operator</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">          <span class="comment">//1.整数常量</span></span><br><span class="line">         System.out.println(<span class="number">3</span>);</span><br><span class="line">         System.out.println(-<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">         <span class="comment">//2.小数常量</span></span><br><span class="line">         System.out.println(<span class="number">3.14</span>);</span><br><span class="line">         System.out.println(-<span class="number">3.14</span>);</span><br><span class="line">         </span><br><span class="line">         <span class="comment">//3.字符常量</span></span><br><span class="line">         System.out.println(<span class="string">&#x27;佳&#x27;</span>);</span><br><span class="line">   </span><br><span class="line">         <span class="comment">//4.字符串常量</span></span><br><span class="line">         System.out.println(<span class="string">&quot;好好学习，天天向上&quot;</span>);</span><br><span class="line">        </span><br><span class="line">         <span class="comment">//5.布尔常量</span></span><br><span class="line">         System.out.println(<span class="literal">true</span>);</span><br><span class="line">         System.out.println(<span class="literal">false</span>);</span><br><span class="line">         <span class="comment">//6.空常量</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-变量"><a href="#11-变量" class="headerlink" title="11.变量"></a>11.变量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="12-数据类型"><a href="#12-数据类型" class="headerlink" title="12.数据类型"></a>12.数据类型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">分类：</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">顶风作案</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/03/26/day01%20java%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/">http://example.com/2023/03/26/day01%20java%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">YunisTo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/java%E5%9F%BA%E7%A1%80/">java基础</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/03/23/hello-world/" title="Hello World"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">顶风作案</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%8D%95%E5%85%83-java%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">第一单元 java基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-java%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. java语言概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. 计算机基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-JDK-JRE-JVM%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. JDK,JRE,JVM的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-JDK9%E5%AE%89%E8%A3%85"><span class="toc-number">1.0.4.</span> <span class="toc-text">4. JDK9安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE-red-circle"><span class="toc-number">1.0.5.</span> <span class="toc-text">5. 环境变量配置   :red_circle:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8FHelloWorld"><span class="toc-number">1.0.6.</span> <span class="toc-text">6. 第一个程序HelloWorld</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A"><span class="toc-number">1.0.7.</span> <span class="toc-text">7. 添加注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.0.8.</span> <span class="toc-text">8. 关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">1.0.9.</span> <span class="toc-text">9. 标识符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%B8%B8%E9%87%8F"><span class="toc-number">1.0.10.</span> <span class="toc-text">10.常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.11.</span> <span class="toc-text">11.变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.0.12.</span> <span class="toc-text">12.数据类型</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/26/day01%20java%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/" title="java"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java"/></a><div class="content"><a class="title" href="/2023/03/26/day01%20java%E5%9F%BA%E7%A1%80-%E7%AC%94%E8%AE%B0/" title="java">java</a><time datetime="2023-03-26T06:50:37.140Z" title="发表于 2023-03-26 14:50:37">2023-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/23/hello-world/" title="Hello World"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2023/03/23/hello-world/" title="Hello World">Hello World</a><time datetime="2023-03-23T12:17:26.240Z" title="发表于 2023-03-23 20:17:26">2023-03-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 顶风作案</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
