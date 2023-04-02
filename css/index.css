@@ -3822,9 +3822,13 @@ h1.page-title + .tag-cloud-list {
 #loading-box .loading-right-bg {
   position: fixed;
   z-index: 1000;
-  width: 50%;
+  width: 100%;
   height: 100%;
-  background-color: var(--preloader-bg);
+  background: -webkit-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
+  background: -moz-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
+  background: -o-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
+  background: -ms-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
+  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
 }
 #loading-box .loading-right-bg {
   right: 0;
@@ -3858,7 +3862,7 @@ h1.page-title + .tag-cloud-list {
   padding: 3px;
   width: 115px;
   height: 115px;
-  background: #ffab91;
+  background: #3ff9dc;
   -webkit-animation: configure-clockwise 3s ease-in-out 0s infinite alternate;
   -moz-animation: configure-clockwise 3s ease-in-out 0s infinite alternate;
   -o-animation: configure-clockwise 3s ease-in-out 0s infinite alternate;
@@ -3890,7 +3894,11 @@ h1.page-title + .tag-cloud-list {
 #loading-box .spinner-box .configure-core {
   width: 100%;
   height: 100%;
-  background-color: var(--preloader-bg);
+  background: -webkit-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
+  background: -moz-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
+  background: -o-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
+  background: -ms-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
+  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
 }
 #loading-box.loaded .loading-left-bg {
   -webkit-transition: all 0.5s;
