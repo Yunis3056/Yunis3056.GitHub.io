@@ -164,9 +164,14 @@ div#category {
 [data-theme="dark"] div#category {
   background: transparent !important;
 }
+/* 顶部导航栏 */
+#page-header.nav-fixed #nav {
+  background-image: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+}
 /* 页脚透明 */
 #footer {
-  background: transparent !important;
+  /* background: transparent !important; */
+  background-image: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
 }
 
 /* 头图透明 */
