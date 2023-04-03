@@ -99,37 +99,37 @@ svg.icon.faa-tada {
 
 /* 首页文章卡片 */
 #recent-posts > .recent-post-item {
-  /* background: rgba(255, 255, 255, 0.9); */
+  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
 }
 
 /* 首页侧栏卡片 */
 #aside-content .card-widget {
-  /* background: rgba(255, 255, 255, 0.9); */
+  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
 }
 
 /* 文章页面正文背景 */
 div#post {
-  /* background: rgba(255, 255, 255, 0.9); */
+  background: linear-gradient(to right, #74f1d8 30%, #74f1d8 100%);
 }
 
 /* 分页页面 */
 div#page {
-  /* background: rgba(255, 255, 255, 0.9); */
+  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
 }
 
 /* 归档页面 */
 div#archive {
-  /* background: rgba(255, 255, 255, 0.9); */
+  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
 }
 
 /* 标签页面 */
 div#tag {
-  /* background: rgba(255, 255, 255, 0.9); */
+  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
 }
 
 /* 分类页面 */
 div#category {
-  /* background: rgba(255, 255, 255, 0.9); */
+  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
 }
 
 /*夜间模式伪类遮罩层透明*/
@@ -166,12 +166,12 @@ div#category {
 }
 /* 顶部导航栏 */
 #page-header.nav-fixed #nav {
-  background-image: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background-image: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%)
 }
 /* 页脚透明 */
 #footer {
   /* background: transparent !important; */
-  background-image: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background-image: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%)
 }
 
 /* 头图透明 */
@@ -191,7 +191,7 @@ div#category {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #3b70fc;
+  background-color: rgb(63, 249, 220);
   border-radius: 2em;
 }
 
@@ -201,7 +201,7 @@ div#category {
 
 ::-moz-selection {
   color: #fff;
-  background-color: #3b70fc;
+  background-color: rgb(63, 249, 220);
 }
 
 /* 音乐播放器 */
