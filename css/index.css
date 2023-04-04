@@ -1479,7 +1479,7 @@ table td {
   background: -o-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
   background: -ms-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
   background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
-  color: #f7f7f7;
+  color: #0174e9;
 }
 button {
   padding: 0;
@@ -2657,11 +2657,11 @@ h1.page-title + .tag-cloud-list {
 #aside-content .card-info #card-info-btn {
   display: block;
   margin-top: 14px;
-  background: -webkit-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -moz-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -o-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -ms-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background: -webkit-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -moz-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -o-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -ms-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: linear-gradient(to right, #00ecbc 0%, #64b3f4 100%);
   color: var(--btn-color);
   text-align: center;
   line-height: 2.4;
