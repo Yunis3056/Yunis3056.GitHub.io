@@ -1,0 +1,411 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Java进阶 | YunisTo</title><meta name="author" content="知无涯"><meta name="copyright" content="知无涯"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="javaSE进阶学习异常处理在Java中，异常处理是一种机制，用于在程序运行过程中处理错误和异常情况。Java中的异常是指在程序运行时出现的一些错误，例如数组越界、空指针、类型转换等。Java提供了一套完整的异常处理机制，允许程序员捕获和处理异常，从而使程序更加健壮和可靠。 Java中的异常处理机制包括两个部分：异常抛出和异常捕获。当程序执行过程中出现异常时，会抛出一个异常对象，这个异常对象会被传">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java进阶">
+<meta property="og:url" content="http://example.com/2023/03/29/java%E8%BF%9B%E9%98%B6/index.html">
+<meta property="og:site_name" content="YunisTo">
+<meta property="og:description" content="javaSE进阶学习异常处理在Java中，异常处理是一种机制，用于在程序运行过程中处理错误和异常情况。Java中的异常是指在程序运行时出现的一些错误，例如数组越界、空指针、类型转换等。Java提供了一套完整的异常处理机制，允许程序员捕获和处理异常，从而使程序更加健壮和可靠。 Java中的异常处理机制包括两个部分：异常抛出和异常捕获。当程序执行过程中出现异常时，会抛出一个异常对象，这个异常对象会被传">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg">
+<meta property="article:published_time" content="2023-03-29T04:20:16.000Z">
+<meta property="article:modified_time" content="2023-04-08T09:59:55.338Z">
+<meta property="article:author" content="知无涯">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/03/29/java%E8%BF%9B%E9%98%B6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java进阶',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-08 17:59:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/08.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="YunisTo"><span class="site-name">YunisTo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java进阶</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-29T04:20:16.000Z" title="发表于 2023-03-29 12:20:16">2023-03-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-08T09:59:55.338Z" title="更新于 2023-04-08 17:59:55">2023-04-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/java/">java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java进阶"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="javaSE进阶学习"><a href="#javaSE进阶学习" class="headerlink" title="javaSE进阶学习"></a>javaSE进阶学习</h2><h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>在Java中，异常处理是一种机制，用于在程序运行过程中处理错误和异常情况。Java中的异常是指在程序运行时出现的一些错误，例如数组越界、空指针、类型转换等。Java提供了一套完整的异常处理机制，允许程序员捕获和处理异常，从而使程序更加健壮和可靠。</p>
+<p>Java中的异常处理机制包括两个部分：异常抛出和异常捕获。当程序执行过程中出现异常时，会抛出一个异常对象，这个异常对象会被传递到调用栈中，直到有合适的异常处理机制来处理它。在Java中，可以使用try-catch语句来捕获异常并进行处理，语法如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// 可能会抛出异常的代码</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ExceptionType1 e1) &#123;</span><br><span class="line">  <span class="comment">// 处理ExceptionType1类型的异常</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ExceptionType2 e2) &#123;</span><br><span class="line">  <span class="comment">// 处理ExceptionType2类型的异常</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  <span class="comment">// 不管有没有异常，都会执行的代码</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其中，try语句块中包含可能会抛出异常的代码，catch语句块用于捕获和处理异常，finally语句块中的代码不管有没有异常都会执行。catch语句块可以包含多个，用于处理不同类型的异常。</span></span><br></pre></td></tr></table></figure>
+
+<p>Java中的异常分为两类：受检异常和非受检异常。受检异常是指在编译时就能够被发现的异常，例如IOException、SQLException等，必须在代码中进行捕获或者抛出。非受检异常是指在运行时才会发生的异常，例如NullPointerException、ArrayIndexOutOfBoundsException等，不需要在代码中进行捕获或者抛出，但可以在需要的时候进行处理。</p>
+<p>除了try-catch语句外，Java还提供了一些其他的异常处理机制，例如throw语句、throws声明、自定义异常等。</p>
+<h3 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h3><ol>
+<li><h4 id="包装类常用方法"><a href="#包装类常用方法" class="headerlink" title="包装类常用方法"></a>包装类常用方法</h4><ul>
+<li><p><strong>数值转换方法：将基本数据类型转换为包装类对象的方法</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer.valueOf(<span class="type">int</span>); <span class="comment">// 可以将 int 类型的值转换为 Integer 对象。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>字符串转换方法：将字符串转换为基本数据类型的方法</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer.parseInt(String); <span class="comment">// 可以将字符串转换为 int 类型的值。</span></span><br><span class="line">Integer.parseDouble(String); <span class="comment">// 可以将字符串转换为 double 类型的值。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>数值比较方法：比较数值大小的方法</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer.compareTo(Integer); <span class="comment">// 可以比较两个 Integer 对象的大小。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>数值操作方法：对数值进行操作的方法</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer.intValue(); <span class="comment">// 可以将 Integer 对象转换为 int 类型的值。</span></span><br><span class="line">Integer.doubleValue(); <span class="comment">//可以将 Integer 对象转换为 double 类型的值。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>进制转换方法：包装类提供了用于在不同进制之间进行转换的方法</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer.toBinaryString(<span class="type">int</span>); <span class="comment">// 可以将 int 类型的值转换为二进制字符串。</span></span><br><span class="line">Integer.toHexString(<span class="type">int</span>); <span class="comment">// 可以将 int 类型的值转换为16进制字符串。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>其他方法</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">equals() <span class="comment">// 对象的比较</span></span><br><span class="line">hashCode() <span class="comment">// 哈希码生成</span></span><br><span class="line">toString() <span class="comment">// 字符串表示</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="日期相关"><a href="#日期相关" class="headerlink" title="日期相关"></a>日期相关</h4><ol>
+<li><p><code>java.util.Date</code>：这是Java中最基本的日期类，表示日期和时间的特定点。然而，它在Java 8及以上版本中已被弃用，因为它存在线程安全和设计上的缺陷。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建当前日期对象</span></span><br><span class="line"><span class="type">Date</span> <span class="variable">currentDate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取日期对象的毫秒数</span></span><br><span class="line"><span class="type">long</span> <span class="variable">timestamp</span> <span class="operator">=</span> currentDate.getTime();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将毫秒数转换为日期对象</span></span><br><span class="line"><span class="type">Date</span> <span class="variable">newDate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>(timestamp);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>java.util.Calendar</code>：这是一个日历类，用于处理日期和时间的计算和操作，提供了许多实用的方法，如日期加减、日期比较、日期格式化等。</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建Calendar对象</span></span><br><span class="line"><span class="type">Calendar</span> <span class="variable">calendar</span> <span class="operator">=</span> Calendar.getInstance();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取当前日期</span></span><br><span class="line"><span class="type">Date</span> <span class="variable">currentDate</span> <span class="operator">=</span> calendar.getTime();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置特定的日期</span></span><br><span class="line">calendar.set(<span class="number">2023</span>, Calendar.APRIL, <span class="number">8</span>); <span class="comment">// 设置为2023年4月8日</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在特定日期上进行加减操作</span></span><br><span class="line">calendar.add(Calendar.DAY_OF_MONTH, <span class="number">7</span>); <span class="comment">// 在当前日期上加7天</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取年、月、日、时、分、秒等字段的值</span></span><br><span class="line"><span class="type">int</span> <span class="variable">year</span> <span class="operator">=</span> calendar.get(Calendar.YEAR);</span><br><span class="line"><span class="type">int</span> <span class="variable">month</span> <span class="operator">=</span> calendar.get(Calendar.MONTH);</span><br><span class="line"><span class="type">int</span> <span class="variable">day</span> <span class="operator">=</span> calendar.get(Calendar.DAY_OF_MONTH);</span><br><span class="line"><span class="type">int</span> <span class="variable">hour</span> <span class="operator">=</span> calendar.get(Calendar.HOUR_OF_DAY);</span><br><span class="line"><span class="type">int</span> <span class="variable">minute</span> <span class="operator">=</span> calendar.get(Calendar.MINUTE);</span><br><span class="line"><span class="type">int</span> <span class="variable">second</span> <span class="operator">=</span> calendar.get(Calendar.SECOND);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>java.time.LocalDate</code>：这是Java 8引入的日期类，用于表示日期，不包含时间和时区信息，具有不变性和线程安全性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建当前日期对象</span></span><br><span class="line"><span class="type">LocalDate</span> <span class="variable">currentDate</span> <span class="operator">=</span> LocalDate.now();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取年、月、日的值</span></span><br><span class="line"><span class="type">int</span> <span class="variable">year</span> <span class="operator">=</span> currentDate.getYear();</span><br><span class="line"><span class="type">Month</span> <span class="variable">month</span> <span class="operator">=</span> currentDate.getMonth();</span><br><span class="line"><span class="type">int</span> <span class="variable">day</span> <span class="operator">=</span> currentDate.getDayOfMonth();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在特定日期上进行加减操作</span></span><br><span class="line"><span class="type">LocalDate</span> <span class="variable">newDate</span> <span class="operator">=</span> currentDate.plusDays(<span class="number">7</span>); <span class="comment">// 在当前日期上加7天</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 进行日期比较</span></span><br><span class="line"><span class="type">LocalDate</span> <span class="variable">otherDate</span> <span class="operator">=</span> LocalDate.of(<span class="number">2023</span>, <span class="number">4</span>, <span class="number">15</span>);</span><br><span class="line"><span class="type">boolean</span> <span class="variable">isBefore</span> <span class="operator">=</span> currentDate.isBefore(otherDate); <span class="comment">// 判断当前日期是否在另一个日期之前</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>java.time.LocalDateTime</code>：这是Java 8引入的日期时间类，用于表示日期和时间，不包含时区信息。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建当前日期时间对象</span></span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">currentDateTime</span> <span class="operator">=</span> LocalDateTime.now();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取年、月、日、时、分、秒的值</span></span><br><span class="line"><span class="type">int</span> <span class="variable">year</span> <span class="operator">=</span> currentDateTime.getYear();</span><br><span class="line"><span class="type">Month</span> <span class="variable">month</span> <span class="operator">=</span> currentDateTime.getMonth();</span><br><span class="line"><span class="type">int</span> <span class="variable">day</span> <span class="operator">=</span> currentDateTime.getDayOfMonth();</span><br><span class="line"><span class="type">int</span> <span class="variable">hour</span> <span class="operator">=</span> currentDateTime.getHour();</span><br><span class="line"><span class="type">int</span> <span class="variable">minute</span> <span class="operator">=</span> currentDateTime.getMinute();</span><br><span class="line"><span class="type">int</span> <span class="variable">second</span> <span class="operator">=</span> currentDateTime.getSecond();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在特定日期时间上进行加减操作</span></span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">newDateTime</span> <span class="operator">=</span> currentDateTime.plusHours(<span class="number">2</span>); <span class="comment">// 在当前日期时间上加2小时</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>java.time.ZonedDateTime</code>：Java 8引入的日期时间类，用于表示带时区信息的日期和时间。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建ZonedDateTime对象</span></span><br><span class="line"><span class="type">ZonedDateTime</span> <span class="variable">currentZonedDateTime</span> <span class="operator">=</span> ZonedDateTime.now(); <span class="comment">// 获取当前日期时间</span></span><br><span class="line"><span class="type">ZonedDateTime</span> <span class="variable">zonedDateTime</span> <span class="operator">=</span> ZonedDateTime.of(<span class="number">2023</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">30</span>, <span class="number">0</span>, <span class="number">0</span>, ZoneId.of(<span class="string">&quot;Asia/Shanghai&quot;</span>)); <span class="comment">// 指定日期时间和时区创建对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取日期时间字段的值</span></span><br><span class="line"><span class="type">int</span> <span class="variable">year</span> <span class="operator">=</span> currentZonedDateTime.getYear();</span><br><span class="line"><span class="type">Month</span> <span class="variable">month</span> <span class="operator">=</span> currentZonedDateTime.getMonth();</span><br><span class="line"><span class="type">int</span> <span class="variable">day</span> <span class="operator">=</span> currentZonedDateTime.getDayOfMonth();</span><br><span class="line"><span class="type">int</span> <span class="variable">hour</span> <span class="operator">=</span> currentZonedDateTime.getHour();</span><br><span class="line"><span class="type">int</span> <span class="variable">minute</span> <span class="operator">=</span> currentZonedDateTime.getMinute();</span><br><span class="line"><span class="type">int</span> <span class="variable">second</span> <span class="operator">=</span> currentZonedDateTime.getSecond();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在特定日期时间上进行加减操作</span></span><br><span class="line"><span class="type">ZonedDateTime</span> <span class="variable">newZonedDateTime</span> <span class="operator">=</span> currentZonedDateTime.plusHours(<span class="number">2</span>); <span class="comment">// 在当前日期时间上加2小时</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取时区信息</span></span><br><span class="line"><span class="type">ZoneId</span> <span class="variable">zone</span> <span class="operator">=</span> currentZonedDateTime.getZone();</span><br><span class="line"><span class="type">String</span> <span class="variable">zoneId</span> <span class="operator">=</span> zone.getId();</span><br><span class="line"><span class="type">ZoneOffset</span> <span class="variable">zoneOffset</span> <span class="operator">=</span> currentZonedDateTime.getOffset();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>java.time.format.DateTimeFormatter</code>：Java 8引入的日期时间格式化类，用于将日期时间对象格式</p>
+<p>化为字符串，或将字符串解析为日期时间对象。 </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建日期时间格式化对象</span></span><br><span class="line"><span class="type">DateTimeFormatter</span> <span class="variable">formatter</span> <span class="operator">=</span> DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将日期时间对象格式化为字符串</span></span><br><span class="line"><span class="type">String</span> <span class="variable">formattedDateTime</span> <span class="operator">=</span> currentDateTime.format(formatter);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将字符串解析为日期时间对象</span></span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">parsedDateTime</span> <span class="operator">=</span> LocalDateTime.parse(<span class="string">&quot;2023-04-08 10:30:00&quot;</span>, formatter);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>java.time.Duration</code>：Java 8引入的持续时间类，用于表示时间段的长度。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建持续时间对象</span></span><br><span class="line"><span class="type">Duration</span> <span class="variable">duration</span> <span class="operator">=</span> Duration.ofHours(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取持续时间的小时、分钟、秒等字段的值</span></span><br><span class="line"><span class="type">long</span> <span class="variable">hours</span> <span class="operator">=</span> duration.toHours();</span><br><span class="line"><span class="type">long</span> <span class="variable">minutes</span> <span class="operator">=</span> duration.toMinutes();</span><br><span class="line"><span class="type">long</span> <span class="variable">seconds</span> <span class="operator">=</span> duration.getSeconds();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>java.time.Period</code>：Java 8引入的时期类，用于表示日期之间的时间段。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建时期对象</span></span><br><span class="line"><span class="type">Period</span> <span class="variable">period</span> <span class="operator">=</span> Period.ofDays(<span class="number">7</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取时期的天、月、年等字段的值</span></span><br><span class="line"><span class="type">int</span> <span class="variable">days</span> <span class="operator">=</span> period.getDays();</span><br><span class="line"><span class="type">int</span> <span class="variable">months</span> <span class="operator">=</span> period.getMonths();</span><br><span class="line"><span class="type">int</span> <span class="variable">years</span> <span class="operator">=</span> period.getYears();</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><h4 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h4><p><code>Math</code>类是Java中提供的一个数学工具类，它包含了很多常用的数学方法，例如常见的数学运算、三角函数、对数函数、随机数生成等。<code>Math</code>类中的所有方法都是静态的，可以直接通过类名调用。</p>
+<h3 id="数学运算方法"><a href="#数学运算方法" class="headerlink" title="数学运算方法"></a>数学运算方法</h3><ul>
+<li><code>Math.abs(double a)</code>：返回参数的绝对值。</li>
+<li><code>Math.ceil(double a)</code>：返回大于等于参数的最小整数。</li>
+<li><code>Math.floor(double a)</code>：返回小于等于参数的最大整数。</li>
+<li><code>Math.max(double a, double b)</code>：返回两个参数中的最大值。</li>
+<li><code>Math.min(double a, double b)</code>：返回两个参数中的最小值。</li>
+<li><code>Math.pow(double a, double b)</code>：返回参数a的b次幂。</li>
+<li><code>Math.sqrt(double a)</code>：返回参数的平方根。</li>
+<li><code>Math.round(float a)</code>：返回参数的四舍五入值。</li>
+<li><code>Math.random()</code>：返回一个[0, 1)之间的随机浮点数。</li>
+</ul>
+<h3 id="三角函数方法"><a href="#三角函数方法" class="headerlink" title="三角函数方法"></a>三角函数方法</h3><ul>
+<li><code>Math.sin(double a)</code>：返回参数的正弦值。</li>
+<li><code>Math.cos(double a)</code>：返回参数的余弦值。</li>
+<li><code>Math.tan(double a)</code>：返回参数的正切值。</li>
+<li><code>Math.asin(double a)</code>：返回参数的反正弦值。</li>
+<li><code>Math.acos(double a)</code>：返回参数的反余弦值。</li>
+<li><code>Math.atan(double a)</code>：返回参数的反正切值。</li>
+</ul>
+<h3 id="对数函数方法"><a href="#对数函数方法" class="headerlink" title="对数函数方法"></a>对数函数方法</h3><ul>
+<li><code>Math.log(double a)</code>：返回参数的自然对数。</li>
+<li><code>Math.log10(double a)</code>：返回参数的以10为底的对数。</li>
+</ul>
+<h3 id="随机数生成方法"><a href="#随机数生成方法" class="headerlink" title="随机数生成方法"></a>随机数生成方法</h3><ul>
+<li><code>Math.random()</code>：返回一个[0, 1)之间的随机浮点数。</li>
+<li><code>Math.nextInt()</code>：返回一个随机的int值。</li>
+<li><code>Math.nextDouble()</code>：返回一个随机的double值。</li>
+</ul>
+</li>
+<li><h4 id="Random类-随机数"><a href="#Random类-随机数" class="headerlink" title="Random类(随机数)"></a>Random类(随机数)</h4><p><code>java.util.Random</code>是Java中用于生成伪随机数的类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建Random对象</span></span><br><span class="line"><span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">   </span><br><span class="line"><span class="comment">// 生成随机整数</span></span><br><span class="line"><span class="type">int</span> <span class="variable">randomNumber</span> <span class="operator">=</span> random.nextInt(); </span><br><span class="line">   </span><br><span class="line"><span class="comment">// 生成整数范围为-2147483648到2147483647</span></span><br><span class="line">System.out.println(<span class="string">&quot;随机整数：&quot;</span> + randomNumber);</span><br><span class="line">   </span><br><span class="line"><span class="comment">// 生成1到10之间的随机整数</span></span><br><span class="line"><span class="type">int</span> <span class="variable">randomNumberInRange</span> <span class="operator">=</span> random.nextInt(<span class="number">10</span>) + <span class="number">1</span>; </span><br><span class="line">   </span><br><span class="line"><span class="comment">// 生成整数范围为0到9，再加1映射到1到10</span></span><br><span class="line">System.out.println(<span class="string">&quot;1到10之间的随机整数：&quot;</span> + randomNumberInRange);</span><br><span class="line">   </span><br><span class="line"><span class="comment">// 生成随机浮点数</span></span><br><span class="line"><span class="type">double</span> <span class="variable">randomDouble</span> <span class="operator">=</span> random.nextDouble(); </span><br><span class="line">   </span><br><span class="line"><span class="comment">// 生成浮点数范围为0.0到1.0</span></span><br><span class="line">System.out.println(<span class="string">&quot;随机浮点数：&quot;</span> + randomDouble);</span><br><span class="line">   </span><br><span class="line"><span class="comment">// 生成随机布尔值</span></span><br><span class="line"><span class="type">boolean</span> <span class="variable">randomBoolean</span> <span class="operator">=</span> random.nextBoolean(); <span class="comment">// 生成true或false</span></span><br><span class="line">System.out.println(<span class="string">&quot;随机布尔值：&quot;</span> + randomBoolean);</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="StringBuilder类"><a href="#StringBuilder类" class="headerlink" title="StringBuilder类"></a>StringBuilder类</h4><p><code>StringBuilder</code>是Java中提供的可变字符串类，用于在处理大量字符串拼接或修改操作时提供高效的性能。与<code>String</code>类不同，<code>StringBuilder</code>对象是可变的，可以直接在原始对象上进行修改，而不会创建新的对象。这样可以避免频繁创建新的字符串对象，从而减少内存开销和提高性能。</p>
+<ul>
+<li><strong><code>StringBuilder</code>类的主要特点包括：</strong></li>
+</ul>
+<ol>
+<li>可变性：<code>StringBuilder</code>对象的长度和内容是可变的，可以直接对其进行修改，包括插入、删除、替换字符等操作。</li>
+<li>缓冲区：<code>StringBuilder</code>类内部使用了一个缓冲区（buffer）来存储字符串内容，可以动态扩展和收缩缓冲区的大小，从而避免了频繁分配和回收内存的开销。</li>
+<li>非线程安全：<code>StringBuilder</code>类不是线程安全的，不适合在多线程环境下共享和修改。如果需要在多线程环境下使用可变字符串，应该使用<code>StringBuffer</code>类，它提供了线程安全的操作。</li>
+</ol>
+<ul>
+<li><p><strong>代码演示</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建一个空的StringBuilder对象</span></span><br><span class="line"><span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 追加字符串</span></span><br><span class="line">sb.append(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">sb.append(<span class="string">&quot;World&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line">System.out.println(sb.toString()); <span class="comment">// 输出: Hello World</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在指定位置插入字符</span></span><br><span class="line">sb.insert(<span class="number">5</span>, <span class="string">&quot;,&quot;</span>); <span class="comment">// 在索引为5的位置插入逗号</span></span><br><span class="line">System.out.println(sb.toString()); <span class="comment">// 输出: Hello, World</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除指定范围的字符</span></span><br><span class="line">sb.delete(<span class="number">5</span>, <span class="number">7</span>); <span class="comment">// 删除索引为5到6的字符</span></span><br><span class="line">System.out.println(sb.toString()); <span class="comment">// 输出: Hello World</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换指定范围的字符</span></span><br><span class="line">sb.replace(<span class="number">6</span>, <span class="number">11</span>, <span class="string">&quot;Java&quot;</span>); <span class="comment">// 将索引为6到10的字符替换为Java</span></span><br><span class="line">System.out.println(sb.toString()); <span class="comment">// 输出: Hello Java</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 反转字符串</span></span><br><span class="line">sb.reverse();</span><br><span class="line">System.out.println(sb.toString()); <span class="comment">// 输出: avaJ olleH</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="StringBuilder常用方法"><a href="#StringBuilder常用方法" class="headerlink" title="StringBuilder常用方法"></a>StringBuilder常用方法</h4><ol>
+<li>append(String str): 将指定的字符串追加到 StringBuilder 对象的末尾。</li>
+<li>insert(int index, String str): 在指定位置插入字符串。</li>
+<li>delete(int start, int end): 删除指定范围内的字符。</li>
+<li>replace(int start, int end, String str): 替换指定范围内的字符为指定字符串。</li>
+<li>reverse(): 反转 StringBuilder 对象中的字符序列。</li>
+<li>length(): 获取 StringBuilder 对象中字符序列的长度。</li>
+<li>capacity(): 获取 StringBuilder 对象的容量。</li>
+<li>toString(): 将 StringBuilder 对象转换为 String 对象。</li>
+</ol>
+</li>
+</ol>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><ol>
+<li><p>toString(): 将 StringBuilder 对象转换为 String 对象。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayListDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建一个 ArrayList 对象</span></span><br><span class="line">        ArrayList&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加元素</span></span><br><span class="line">        list.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;banana&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取元素</span></span><br><span class="line">        System.out.println(<span class="string">&quot;第一个元素：&quot;</span> + list.get(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 修改元素</span></span><br><span class="line">        list.set(<span class="number">1</span>, <span class="string">&quot;orange&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 删除元素</span></span><br><span class="line">        list.remove(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历元素</span></span><br><span class="line">        <span class="keyword">for</span> (String fruit : list) &#123;</span><br><span class="line">            System.out.println(fruit);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断是否包含某个元素</span></span><br><span class="line">        System.out.println(<span class="string">&quot;是否包含 apple：&quot;</span> + list.contains(<span class="string">&quot;apple&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取集合的大小</span></span><br><span class="line">        System.out.println(<span class="string">&quot;集合的大小：&quot;</span> + list.size());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>HashMap&lt;K, V&gt;: 散列表，实现了 Map 接口，用于存储键值对，键和值可以为 null，键不可重复，值可以重复。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HashMapDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建一个 HashMap 对象</span></span><br><span class="line">        HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加键值对</span></span><br><span class="line">        map.put(<span class="string">&quot;apple&quot;</span>, <span class="number">3</span>);</span><br><span class="line">        map.put(<span class="string">&quot;banana&quot;</span>, <span class="number">2</span>);</span><br><span class="line">        map.put(<span class="string">&quot;cherry&quot;</span>, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取值</span></span><br><span class="line">        System.out.println(<span class="string">&quot;apple 对应的值：&quot;</span> + map.get(<span class="string">&quot;apple&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 修改值</span></span><br><span class="line">        map.put(<span class="string">&quot;banana&quot;</span>, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 删除键值对</span></span><br><span class="line">        map.remove(<span class="string">&quot;cherry&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历键值对</span></span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) &#123;</span><br><span class="line">            System.out.println(entry.getKey() + <span class="string">&quot;: &quot;</span> + entry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断是否包含某个键</span></span><br><span class="line">        System.out.println(<span class="string">&quot;是否包含 apple 键：&quot;</span> + map.containsKey(<span class="string">&quot;apple&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取 Map 的大小</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Map 的大小：&quot;</span> + map.size());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>HashSet<E>: 散列集，实现了 Set 接口，用于存储不重复的元素，元素可以为 null。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.util.HashSet;</span><br><span class="line"></span><br><span class="line">public class HashSetDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 创建一个 HashSet 对象</span><br><span class="line">        HashSet&lt;String&gt; set = new HashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        // 添加元素</span><br><span class="line">        set.add(&quot;apple&quot;);</span><br><span class="line">        set.add(&quot;banana&quot;);</span><br><span class="line">        set.add(&quot;cherry&quot;);</span><br><span class="line"></span><br><span class="line">        // 判断是否包含某个元素</span><br><span class="line">        System.out.println(&quot;是否包含 apple：&quot; + set.contains(&quot;apple&quot;));</span><br><span class="line">        </span><br><span class="line">        // 删除元素</span><br><span class="line">        set.remove(&quot;banana&quot;);</span><br><span class="line"></span><br><span class="line">        // 遍历元素</span><br><span class="line">        for (String fruit : set) &#123;</span><br><span class="line">            System.out.println(fruit);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 获取集合的大小</span><br><span class="line">        System.out.println(&quot;集合的大小：&quot; + set.size());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>LinkedList<E>: 链表，实现了 List 接口，用于存储和操作链式结构的元素。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建一个 LinkedList 对象</span></span><br><span class="line">     LinkedList&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">   </span><br><span class="line">     <span class="comment">// 添加元素</span></span><br><span class="line">     list.add(<span class="string">&quot;apple&quot;</span>);</span><br><span class="line">     list.addFirst(<span class="string">&quot;banana&quot;</span>); <span class="comment">// 在链表头添加元素</span></span><br><span class="line">     list.addLast(<span class="string">&quot;cherry&quot;</span>); <span class="comment">// 在链表尾添加元素</span></span><br><span class="line">   </span><br><span class="line">     <span class="comment">// 获取元素</span></span><br><span class="line">     System.out.println(<span class="string">&quot;第一个元素：&quot;</span> + list.getFirst());</span><br><span class="line">     System.out.println(<span class="string">&quot;最后一个元素：&quot;</span> + list.getLast());</span><br><span class="line">   </span><br><span class="line">     <span class="comment">// 修改元素</span></span><br><span class="line">     list.set(<span class="number">1</span>, <span class="string">&quot;orange&quot;</span>);</span><br><span class="line">   </span><br><span class="line">     <span class="comment">// 删除元素</span></span><br><span class="line">     list.removeLast();</span><br><span class="line">   </span><br><span class="line">     <span class="comment">// 遍历元素</span></span><br><span class="line">     <span class="keyword">for</span> (String fruit : list) &#123;</span><br><span class="line">         System.out.println(fruit);</span><br><span class="line">     &#125;</span><br><span class="line">   </span><br><span class="line">     <span class="comment">// 判断是否包含某个元素</span></span><br><span class="line">     System.out.println(<span class="string">&quot;是否包含 apple：&quot;</span> + list.contains(<span class="string">&quot;apple&quot;</span>));</span><br><span class="line">   </span><br><span class="line">     <span class="comment">// 获取链表的大小</span></span><br><span class="line">     System.out.println(<span class="string">&quot;链表的大小：&quot;</span> + list.size());</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h3><h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>Java 的多线程是一种并发编程的方式，允许在同一程序中同时执行多个线程，从而可以同时处理多个任务，提高程序的性能和效率。</p>
+<ul>
+<li>多线程的实现方式</li>
+</ul>
+<ol>
+<li><p>继承 Thread 类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThread</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 线程的执行逻辑</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Thread &quot;</span> + Thread.currentThread().getId() + <span class="string">&quot; is running.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建并启动线程</span></span><br><span class="line">        <span class="type">MyThread</span> <span class="variable">thread1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread</span>();</span><br><span class="line">        thread1.start();</span><br><span class="line"></span><br><span class="line">        <span class="type">MyThread</span> <span class="variable">thread2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread</span>();</span><br><span class="line">        thread2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>实现 Runnable 接口：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyRunnable</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 线程的执行逻辑</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Thread &quot;</span> + Thread.currentThread().getId() + <span class="string">&quot; is running.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建并启动线程</span></span><br><span class="line">        <span class="type">MyRunnable</span> <span class="variable">runnable1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyRunnable</span>();</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(runnable1);</span><br><span class="line">        thread1.start();</span><br><span class="line"></span><br><span class="line">        <span class="type">MyRunnable</span> <span class="variable">runnable2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyRunnable</span>();</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(runnable2);</span><br><span class="line">        thread2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li><p>类和接口</p>
+<ol>
+<li><p>Executor 接口：Executor 接口是 Java 提供的一个简化的线程池框架，用于管理和执行线程任务。通过 Executor 接口，可以将任务提交给线程池，由线程池来负责创建、管理和调度线程的执行。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Executor</span> <span class="variable">executor</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">5</span>); <span class="comment">// 创建一个固定大小的线程池</span></span><br><span class="line"><span class="type">Runnable</span> <span class="variable">task</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyRunnable</span>(); <span class="comment">// 创建一个实现了 Runnable 接口的任务</span></span><br><span class="line">executor.execute(task); <span class="comment">// 提交任务给线程池执行</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>ThreadPoolExecutor 类：ThreadPoolExecutor 是 Executor 接口的实现类，它提供了更丰富的线程池配置和管理功能，例如线程池大小、线程池的拒绝策略、线程池的生命周期管理等。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">ThreadPoolExecutor</span> <span class="variable">executor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(</span><br><span class="line">    <span class="number">5</span>, <span class="comment">// 核心线程数</span></span><br><span class="line">    <span class="number">10</span>, <span class="comment">// 最大线程数</span></span><br><span class="line">    <span class="number">60</span>, <span class="comment">// 空闲线程的存活时间</span></span><br><span class="line">    TimeUnit.SECONDS, <span class="comment">// 存活时间单位</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="number">100</span>), <span class="comment">// 任务队列</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.CallerRunsPolicy() <span class="comment">// 拒绝策略</span></span><br><span class="line">);</span><br><span class="line"><span class="type">Runnable</span> <span class="variable">task</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyRunnable</span>(); <span class="comment">// 创建一个实现了 Runnable 接口的任务</span></span><br><span class="line">executor.execute(task); <span class="comment">// 提交任务给线程池执行</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>Lock 接口：Lock 接口提供了比传统的 synchronized 关键字更灵活和强大的线程同步方式。Lock 接口允许显式地获取和释放锁，从而可以更精细地控制线程的互斥访问。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Lock</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ReentrantLock</span>(); <span class="comment">// 创建一个可重入锁</span></span><br><span class="line">lock.lock(); <span class="comment">// 获取锁</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 执行临界区代码</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    lock.unlock(); <span class="comment">// 释放锁</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>Condition 接口：Condition 接口可以与 Lock 接口一起使用，提供了更灵活和高级的线程通信方式。通过 Condition 接口，可以实现线程间的等待和通知机制。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Lock</span> <span class="variable">lock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ReentrantLock</span>(); <span class="comment">// 创建一个可重入锁</span></span><br><span class="line"><span class="type">Condition</span> <span class="variable">condition</span> <span class="operator">=</span> lock.newCondition(); <span class="comment">// 创建一个条件变量</span></span><br><span class="line">lock.lock(); <span class="comment">// 获取锁</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (!conditionMet()) &#123;</span><br><span class="line">        condition.await(); <span class="comment">// 等待条件满足</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 执行操作</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    lock.unlock(); <span class="comment">// 释放锁</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3><h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><h3 id="反射机制"><a href="#反射机制" class="headerlink" title="反射机制"></a>反射机制</h3></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">知无涯</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/03/29/java%E8%BF%9B%E9%98%B6/">http://example.com/2023/03/29/java%E8%BF%9B%E9%98%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">YunisTo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/31/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ASQL%E8%AF%AD%E5%8F%A5/" title="MySQL数据库及SQL语句"><img class="cover" src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MySQL数据库及SQL语句</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/26/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="面向对象"><img class="cover" src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">面向对象</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/08.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">知无涯</div><div class="author-info__description">永远善良，永远来日方长</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Yunis3056"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Yunis3056" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lyns3056@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#javaSE%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">javaSE进阶学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">常用类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">包装类常用方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E7%9B%B8%E5%85%B3"><span class="toc-number">1.2.2.</span> <span class="toc-text">日期相关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Math%E7%B1%BB"><span class="toc-number">1.2.3.</span> <span class="toc-text">Math类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">数学运算方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">三角函数方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%95%B0%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text">对数函数方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">随机数生成方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Random%E7%B1%BB-%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">1.6.1.</span> <span class="toc-text">Random类(随机数)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#StringBuilder%E7%B1%BB"><span class="toc-number">1.6.2.</span> <span class="toc-text">StringBuilder类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#StringBuilder%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.3.</span> <span class="toc-text">StringBuilder常用方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88"><span class="toc-number">1.7.</span> <span class="toc-text">集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IO%E6%B5%81"><span class="toc-number">1.8.</span> <span class="toc-text">IO流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.9.</span> <span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="toc-number">1.10.</span> <span class="toc-text">网络编程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JUnit"><span class="toc-number">1.11.</span> <span class="toc-text">JUnit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE"><span class="toc-number">1.12.</span> <span class="toc-text">枚举</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.13.</span> <span class="toc-text">注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6"><span class="toc-number">1.14.</span> <span class="toc-text">反射机制</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98/" title="面试题"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试题"/></a><div class="content"><a class="title" href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98/" title="面试题">面试题</a><time datetime="2023-04-02T10:01:18.000Z" title="发表于 2023-04-02 18:01:18">2023-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/31/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ASQL%E8%AF%AD%E5%8F%A5/" title="MySQL数据库及SQL语句"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL数据库及SQL语句"/></a><div class="content"><a class="title" href="/2023/03/31/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8ASQL%E8%AF%AD%E5%8F%A5/" title="MySQL数据库及SQL语句">MySQL数据库及SQL语句</a><time datetime="2023-03-30T16:07:34.000Z" title="发表于 2023-03-31 00:07:34">2023-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/29/java%E8%BF%9B%E9%98%B6/" title="Java进阶"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java进阶"/></a><div class="content"><a class="title" href="/2023/03/29/java%E8%BF%9B%E9%98%B6/" title="Java进阶">Java进阶</a><time datetime="2023-03-29T04:20:16.000Z" title="发表于 2023-03-29 12:20:16">2023-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/26/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="面向对象"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面向对象"/></a><div class="content"><a class="title" href="/2023/03/26/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="面向对象">面向对象</a><time datetime="2023-03-26T12:25:05.000Z" title="发表于 2023-03-26 20:25:05">2023-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/26/Java%E5%9F%BA%E7%A1%80/" title="java基础"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/44.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java基础"/></a><div class="content"><a class="title" href="/2023/03/26/Java%E5%9F%BA%E7%A1%80/" title="java基础">java基础</a><time datetime="2023-03-26T11:33:20.000Z" title="发表于 2023-03-26 19:33:20">2023-03-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By 知无涯</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="8260486260" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false"> </div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

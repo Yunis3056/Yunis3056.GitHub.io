@@ -1474,11 +1474,11 @@ table td {
   vertical-align: middle;
 }
 *::selection {
-  background: -webkit-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -moz-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -o-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -ms-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background: -webkit-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -moz-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -o-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -ms-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: linear-gradient(to right, #00ecbc 0%, #64b3f4 100%);
   color: #0174e9;
 }
 button {
@@ -2272,16 +2272,6 @@ figure.highlight pre .javascript .function {
     width: 100% !important;
   }
 }
-@media screen and (min-width: 900px) {
-  .layout > div:first-child {
-    -webkit-box-ordinal-group: 2;
-    -moz-box-ordinal-group: 2;
-    -o-box-ordinal-group: 2;
-    -ms-flex-order: 2;
-    -webkit-order: 2;
-    order: 2;
-  }
-}
 .layout.hide-aside {
   max-width: 1000px;
 }
@@ -2600,7 +2590,7 @@ h1.page-title + .tag-cloud-list {
 }
 @media screen and (min-width: 900px) {
   #aside-content {
-    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 @media screen and (max-width: 900px) {
@@ -2958,11 +2948,11 @@ h1.page-title + .tag-cloud-list {
   color: #49b1f5;
 }
 #aside-content #card-toc .toc-content .toc-link.active {
-  background: -webkit-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -moz-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -o-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -ms-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background: -webkit-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -moz-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -o-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -ms-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: linear-gradient(to right, #00ecbc 0%, #64b3f4 100%);
   color: #fff;
 }
 #aside-content .sticky_layout:only-child > :first-child {
@@ -4240,11 +4230,11 @@ h1.page-title + .tag-cloud-list {
   text-align: center;
 }
 #pagination .page-number.current {
-  background: -webkit-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -moz-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -o-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: -ms-linear-gradient(left, #64b3f4 0%, #00ecbc 100%);
-  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background: -webkit-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -moz-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -o-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: -ms-linear-gradient(left, #00ecbc 0%, #64b3f4 100%);
+  background: linear-gradient(to right, #00ecbc 0%, #64b3f4 100%);
   color: var(--white);
 }
 #pagination .pagination-info {
