@@ -99,37 +99,37 @@ svg.icon.faa-tada {
 
 /* 首页文章卡片 */
 #recent-posts > .recent-post-item {
-  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background: #fff;
 }
 
 /* 首页侧栏卡片 */
 #aside-content .card-widget {
-  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background: #fff;
 }
 
 /* 文章页面正文背景 */
 div#post {
-  background: linear-gradient(to right, #74f1d8 30%, #74f1d8 100%);
+  background: #fff;
 }
 
 /* 分页页面 */
 div#page {
-  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background: #fff;
 }
 
 /* 归档页面 */
 div#archive {
-  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background: #fff;
 }
 
 /* 标签页面 */
 div#tag {
-  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background:#fff;
 }
 
 /* 分类页面 */
 div#category {
-  background: linear-gradient(to right, #64b3f4 0%, #00ecbc 100%);
+  background: #fff;
 }
 
 /*夜间模式伪类遮罩层透明*/
