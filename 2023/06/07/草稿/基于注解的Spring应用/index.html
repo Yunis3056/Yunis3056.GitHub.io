@@ -1,0 +1,488 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>基于注解的Spring应用 | YunisTo</title><meta name="author" content="知无涯"><meta name="copyright" content="知无涯"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于注解的Spring应用Bean基本注解开发Spring除了xml配置文件进行配置之外，还可以使用注解方式进行配置，注解方式慢慢成为xml配置的替代方案。我 们有了xml开发的经验，学习注解开发就方便了许多，注解开发更加快捷方便。 Spring提供的注解有三个版本：   2.0时代，Spring开始出现注解   2.5时代，Spring的Bean配置可以使用注解完成   3.0时代，Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于注解的Spring应用">
+<meta property="og:url" content="http://example.com/2023/06/07/%E8%8D%89%E7%A8%BF/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84Spring%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="YunisTo">
+<meta property="og:description" content="基于注解的Spring应用Bean基本注解开发Spring除了xml配置文件进行配置之外，还可以使用注解方式进行配置，注解方式慢慢成为xml配置的替代方案。我 们有了xml开发的经验，学习注解开发就方便了许多，注解开发更加快捷方便。 Spring提供的注解有三个版本：   2.0时代，Spring开始出现注解   2.5时代，Spring的Bean配置可以使用注解完成   3.0时代，Spring">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/7.jpg">
+<meta property="article:published_time" content="2023-06-07T03:51:04.000Z">
+<meta property="article:modified_time" content="2023-06-20T10:50:55.228Z">
+<meta property="article:author" content="知无涯">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/7.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/06/07/%E8%8D%89%E7%A8%BF/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84Spring%E5%BA%94%E7%94%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于注解的Spring应用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-20 18:50:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/10021.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/7.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="YunisTo"><span class="site-name">YunisTo</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">基于注解的Spring应用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-07T03:51:04.000Z" title="发表于 2023-06-07 11:51:04">2023-06-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-20T10:50:55.228Z" title="更新于 2023-06-20 18:50:55">2023-06-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/java/">java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基于注解的Spring应用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="基于注解的Spring应用"><a href="#基于注解的Spring应用" class="headerlink" title="基于注解的Spring应用"></a>基于注解的Spring应用</h2><h3 id="Bean基本注解开发"><a href="#Bean基本注解开发" class="headerlink" title="Bean基本注解开发"></a>Bean基本注解开发</h3><p>Spring除了xml配置文件进行配置之外，还可以使用注解方式进行配置，注解方式慢慢成为xml配置的替代方案。我 们有了xml开发的经验，学习注解开发就方便了许多，注解开发更加快捷方便。 Spring提供的注解有三个版本： </p>
+<ul>
+<li><p>2.0时代，Spring开始出现注解 </p>
+</li>
+<li><p>2.5时代，Spring的Bean配置可以使用注解完成 </p>
+</li>
+<li><p>3.0时代，Spring其他配置也可以使用注解完成，我们进入全注解时代</p>
+</li>
+</ul>
+<p>基本Bean注解，主要是使用注解的方式替代原有xml的  标签及其标签属性的配置</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span> <span class="attr">scope</span>=<span class="string">&quot;&quot;</span> <span class="attr">lazy-init</span>=<span class="string">&quot;&quot;</span> <span class="attr">init-method</span>=<span class="string">&quot;&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">abstract</span>=<span class="string">&quot;&quot;</span> <span class="attr">autowire</span>=<span class="string">&quot;&quot;</span> <span class="attr">factory-bean</span>=<span class="string">&quot;&quot;</span> <span class="attr">factory-method</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用@Component 注解替代标签</p>
+<table>
+<thead>
+<tr>
+<th>xml配置</th>
+<th>注解</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt; bean id&#x3D;”” class&#x3D;””&gt;</td>
+<td>@Component</td>
+<td>被该注解标识的类，会在指定扫描范围内被Spring加载并实例化</td>
+</tr>
+</tbody></table>
+<p>可以通过@Component注解的value属性指定当前Bean实例的beanName，也可以省略不写，不写的情况下为当前 类名首字母小写</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//获取方式：applicationContext.getBean(&quot;userDao&quot;);</span></span><br><span class="line"><span class="meta">@Component(&quot;userDao&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span> &#123;&#125;</span><br><span class="line"><span class="comment">//获取方式：applicationContext.getBean(&quot;userDaoImpl&quot;);</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用注解对需要被Spring实例化的Bean进行标注，但是需要告诉Spring去哪找这些Bean，要配置组件扫描路径</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/xmlSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;</span></span></span><br><span class="line"><span class="string"><span class="tag">http://www.springframework.org/schema/beans </span></span></span><br><span class="line"><span class="string"><span class="tag">http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">http://www.springframework.org/schema/context </span></span></span><br><span class="line"><span class="string"><span class="tag">http://www.springframework.org/schema/context/spring-context.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 告知Spring框架去itheima包及其子包下去扫描使用了注解的类 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.itheima&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>@Component就单纯一个value属性，那么xml配置  时那些属性怎么进行配置呢？Spring 是通过注解方 式去配置的之前  标签中的那些属性，例如：@Scope</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span> <span class="attr">scope</span>=<span class="string">&quot;&quot;</span> <span class="attr">lazy-init</span>=<span class="string">&quot;&quot;</span> <span class="attr">init-method</span>=<span class="string">&quot;&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;&quot;</span> </span></span><br><span class="line"><span class="tag"><span class="attr">abstract</span>=<span class="string">&quot;&quot;</span> <span class="attr">autowire</span>=<span class="string">&quot;&quot;</span> <span class="attr">factory-bean</span>=<span class="string">&quot;&quot;</span> <span class="attr">factory-method</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用@Component 注解替代标签</p>
+<table>
+<thead>
+<tr>
+<th>Xml配置</th>
+<th>注解</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt; bean scope&#x3D;””&gt;</td>
+<td>@Scope</td>
+<td>在类上或使用了@Bean标注的方法上，标注Bean的作用范围，取值为 singleton或prototype</td>
+</tr>
+<tr>
+<td>&lt; bean lazy-init&#x3D;””&gt;</td>
+<td>@Lazy</td>
+<td>在类上或使用了@Bean标注的方法上，标注Bean是否延迟加载，取值为 true和false</td>
+</tr>
+<tr>
+<td>&lt; bean init-method&#x3D;””&gt;</td>
+<td>@PostConstruct</td>
+<td>在方法上使用，标注Bean的实例化后执行的方法</td>
+</tr>
+<tr>
+<td>&lt; bean destroy-method&#x3D;””&gt;</td>
+<td>@PreDestroy</td>
+<td>在方法上使用，标注Bean的销毁前执行方法</td>
+</tr>
+</tbody></table>
+<p>使用上述注解完成UserDaoImpl的基本配置</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component(&quot;userDao&quot;)</span></span><br><span class="line"><span class="meta">@Scope(&quot;singleton&quot;)</span></span><br><span class="line"><span class="meta">@Lazy(true)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@PreDestroy</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>由于JavaEE开发是分层的，为了每层Bean标识的注解语义化更加明确，@Component又衍生出如下三个注解：</p>
+<table>
+<thead>
+<tr>
+<th>@Component衍生注解</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Repository</td>
+<td>在Dao层类上使用</td>
+</tr>
+<tr>
+<td>@Service</td>
+<td>在Service层类上使用</td>
+</tr>
+<tr>
+<td>@Controller</td>
+<td>在Web层类上使用</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Repository(&quot;userDao&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service(&quot;userService&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">UserService</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller(&quot;userService&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Bean依赖注入注解开发"><a href="#Bean依赖注入注解开发" class="headerlink" title="Bean依赖注入注解开发"></a>Bean依赖注入注解开发</h3><p>Bean依赖注入的注解，主要是使用注解的方式替代xml的  标签完成属性的注入操作</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Spring主要提供如下注解，用于在Bean内部进行属性注入的：</p>
+<table>
+<thead>
+<tr>
+<th>属性注入注解</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Value</td>
+<td>使用在字段或方法上，用于注入普通数据</td>
+</tr>
+<tr>
+<td>@Autowired</td>
+<td>使用在字段或方法上，用于根据类型（byType）注入引用数据</td>
+</tr>
+<tr>
+<td>@Qualifier</td>
+<td>使用在字段或方法上，结合@Autowired，根据名称注入</td>
+</tr>
+<tr>
+<td>@Resource</td>
+<td>使用在字段或方法上，根据类型或名称进行注入</td>
+</tr>
+</tbody></table>
+<p>通过@Value 直接注入普通属性</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Value(&quot;haohao&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String username;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Value(&quot;haohao&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUsername</span><span class="params">(String username)</span>&#123;</span><br><span class="line">	System.out.println(username);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>@Autowired注解，用于根据类型进行注入</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用在属性上直接注入</span></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> UserDao userDao;</span><br><span class="line"><span class="comment">//使用在方法上直接注入</span></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUserDao</span><span class="params">(UserDao userDao)</span>&#123;</span><br><span class="line">	System.out.println(userDao);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>当容器中同一类型的Bean实例有多个时，会尝试自动根据名字进行匹配：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//匹配当前Bean</span></span><br><span class="line"><span class="meta">@Repository(&quot;userDao&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository(&quot;userDao2&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoImpl2</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span>&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>@Qualifier配合@Autowired可以完成根据名称注入Bean实例，使用@Qualifier指定名称</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="meta">@Qualifier(&quot;userDao2&quot;)</span></span><br><span class="line"><span class="keyword">private</span> UserDao userDao;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="meta">@Qualifier(&quot;userDao2&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUserDao</span><span class="params">(UserDao userDao)</span>&#123;</span><br><span class="line">	System.out.println(userDao);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>@Resource注解既可以根据类型注入，也可以根据名称注入，无参就是根据类型注入，有参数就是根据名称注入</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> UserDao userDao;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Resource(name = &quot;userDao2&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUserDao</span><span class="params">(UserDao userDao)</span>&#123;</span><br><span class="line">	System.out.println(userDao);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>PS：@Resource注解存在与 javax.annotation 包中，Spring对其进行了解析</p>
+<h3 id="非自定义Bean注解开发"><a href="#非自定义Bean注解开发" class="headerlink" title="非自定义Bean注解开发"></a>非自定义Bean注解开发</h3><p>非自定义Bean不能像自定义Bean一样使用@Component进行管理，非自定义Bean要通过工厂的方式进行实例化， 使用@Bean标注方法即可，@Bean的属性为beanName，如不指定为当前工厂方法名称</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//将方法返回值Bean实例以@Bean注解指定的名称存储到Spring容器中</span></span><br><span class="line"><span class="meta">@Bean(&quot;dataSource&quot;)</span></span><br><span class="line"><span class="keyword">public</span> DataSource <span class="title function_">dataSource</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">DruidDataSource</span> <span class="variable">dataSource</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DruidDataSource</span>();</span><br><span class="line">    dataSource.setDriverClassName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>);</span><br><span class="line">    dataSource.setUrl(<span class="string">&quot;jdbc:mysql://localhost:3306/mybatis&quot;</span>);</span><br><span class="line">    dataSource.setUsername(<span class="string">&quot;root&quot;</span>);</span><br><span class="line">    dataSource.setPassword(<span class="string">&quot;root&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> dataSource;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>PS：工厂方法所在类必须要被Spring管理</p>
+<p>如果@Bean工厂方法需要参数的话，则有如下几种注入方式： </p>
+<ul>
+<li><p>使用@Autowired 根据类型自动进行Bean的匹配，@Autowired可以省略 ； </p>
+</li>
+<li><p>使用@Qualifier 根据名称进行Bean的匹配； </p>
+</li>
+<li><p>使用@Value 根据名称进行普通数据类型匹配。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@Autowired</span> <span class="comment">//根据类型匹配参数</span></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">objectDemo01</span><span class="params">(UserDao userDao)</span>&#123;</span><br><span class="line">    System.out.println(userDao);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> Object <span class="title function_">objectDemo02</span><span class="params">(<span class="meta">@Qualifier(&quot;userDao&quot;)</span> UserDao userDao,</span></span><br><span class="line"><span class="params"><span class="meta">@Value(&quot;$&#123;jdbc.username&#125;&quot;)</span> String username)</span>&#123;</span><br><span class="line">    System.out.println(userDao);</span><br><span class="line">    System.out.println(username);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Bean配置类的注解开发"><a href="#Bean配置类的注解开发" class="headerlink" title="Bean配置类的注解开发"></a>Bean配置类的注解开发</h3><p>@Component等注解替代了标签，但是像、 等非 标签怎 样去使用注解替代呢？</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 加载properties文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">&quot;classpath:jdbc.properties&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 组件扫描 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.itheima&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 引入其他xml文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">import</span> <span class="attr">resource</span>=<span class="string">&quot;classpath:beans.xml&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>定义一个配置类替代原有的xml配置文件，标签以外的标签，一般都是在配置类上使用注解完成的</p>
+<p>@Configuration注解标识的类为配置类，替代原有xml配置文件，该注解第一个作用是标识该类是一个配置类，第 二个作用是具备@Component作用</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ApplicationContextConfig</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@ComponentScan 组件扫描配置，替代原有xml文件中的 &lt; context:component-scan base-package&#x3D;””&#x2F;&gt;</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(&#123;&quot;com.itheima.service&quot;,&quot;com.itheima.dao&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ApplicationContextConfig</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>base-package的配置方式： </p>
+<ul>
+<li><p>指定一个或多个包名：扫描指定包及其子包下使用注解的类 </p>
+</li>
+<li><p>不配置包名：扫描当前@componentScan注解配置类所在包及其子包下的类</p>
+</li>
+</ul>
+<p>@PropertySource 注解用于加载外部properties资源配置，替代原有xml中的&lt; context:property-placeholder location&#x3D;“”&#x2F;&gt;  配置</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="meta">@PropertySource(&#123;&quot;classpath:jdbc.properties&quot;,&quot;classpath:xxx.properties&quot;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ApplicationContextConfig</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@Import 用于加载其他配置类，替代原有xml中的&lt; import resource&#x3D;”classpath:beans.xml”&#x2F;&gt;配置</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="meta">@PropertySource(&quot;classpath:jdbc.properties&quot;)</span></span><br><span class="line"><span class="meta">@Import(OtherConfig.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ApplicationContextConfig</span> &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Spring-配置其他注解"><a href="#Spring-配置其他注解" class="headerlink" title="Spring 配置其他注解"></a>Spring 配置其他注解</h3><p>扩展：@Primary注解用于标注相同类型的Bean优先被使用权，@Primary 是Spring3.0引入的，与@Component 和@Bean一起使用，标注该Bean的优先级更高，则在通过类型获取Bean或通过@Autowired根据类型进行注入时， 会选用优先级更高的</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Repository(&quot;userDao&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository(&quot;userDao2&quot;)</span></span><br><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoImpl2</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> UserDao <span class="title function_">userDao01</span><span class="params">()</span>&#123;<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">UserDaoImpl</span>()&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@Primary</span></span><br><span class="line"><span class="keyword">public</span> UserDao <span class="title function_">userDao02</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">UserDaoImpl2</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>扩展：@Profile 注解的作用同于xml配置时学习profile属性，是进行环境切换使用的</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">profile</span>=<span class="string">&quot;test&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注解 @Profile 标注在类或方法上，标注当前产生的Bean从属于哪个环境，只有激活了当前环境，被标注的Bean才 能被注册到Spring容器里，不指定环境的Bean，任何环境下都能注册到Spring容器里</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Repository(&quot;userDao&quot;)</span></span><br><span class="line"><span class="meta">@Profile(&quot;test&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span>&#123;&#125;</span><br><span class="line"><span class="meta">@Repository(&quot;userDao2&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoImpl2</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用以下两种方式指定被激活的环境： </p>
+<ul>
+<li><p>使用命令行动态参数，虚拟机参数位置加载 -Dspring.profiles.active&#x3D;test </p>
+</li>
+<li><p>使用代码的方式设置环境变量 System.setProperty(“spring.profiles.active”,”test”);</p>
+</li>
+</ul>
+<h3 id="Spring注解的解析原理"><a href="#Spring注解的解析原理" class="headerlink" title="Spring注解的解析原理"></a>Spring注解的解析原理</h3><p><img src="D:\blog\source_posts\Spring框架的诞生\image-20230607143231664.png" alt="image-20230607143231664"></p>
+<p>使用@Component等注解配置完毕后，要配置组件扫描才能使注解生效</p>
+<ul>
+<li><p>xml配置组件扫描：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.itheima&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><p>配置类配置组件扫描：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.itheima&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AppConfig</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Spring注解方式整合第三方框架"><a href="#Spring注解方式整合第三方框架" class="headerlink" title="Spring注解方式整合第三方框架"></a>Spring注解方式整合第三方框架</h3><p>第三方框架整合，依然使用MyBatis作为整合对象，之前我们已经使用xml方式整合了MyBatis，现在使用注解方式 无非就是将xml标签替换为注解，将xml配置文件替换为配置类而已，原有xml方式整合配置如下：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--配置数据源--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.alibaba.druid.pool.DruidDataSource&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/mybatis&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--配置SqlSessionFactoryBean--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--配置Mapper包扫描--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;basePackage&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.itheima.dao&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用@Bean将DataSource和SqlSessionFactoryBean存储到Spring容器中，而MapperScannerConfigurer使用注 解@MapperScan进行指明需要扫描的Mapper在哪个包下，使用注解整合MyBatis配置方式如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.itheima&quot;)</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;com.itheima.mapper&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ApplicationContextConfig</span> &#123;</span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> DataSource <span class="title function_">dataSource</span><span class="params">()</span>&#123;</span><br><span class="line"><span class="type">DruidDataSource</span> <span class="variable">dataSource</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DruidDataSource</span>();</span><br><span class="line"><span class="comment">//省略部分代码</span></span><br><span class="line"><span class="keyword">return</span> dataSource;&#125;</span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> SqlSessionFactoryBean <span class="title function_">sqlSessionFactoryBean</span><span class="params">(DataSource dataSource)</span>&#123;</span><br><span class="line"><span class="type">SqlSessionFactoryBean</span> <span class="variable">sqlSessionFactoryBean</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBean</span>();</span><br><span class="line">sqlSessionFactoryBean.setDataSource(dataSource);</span><br><span class="line"><span class="keyword">return</span> sqlSessionFactoryBean;</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注解方式，Spring整合MyBatis的原理，关键在于@MapperScan，@MapperScan不是Spring提供的注解，是 MyBatis为了整合Spring，在整合包org.mybatis.spring.annotation中提供的注解，源码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE&#125;)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Import(&#123;MapperScannerRegistrar.class&#125;)</span></span><br><span class="line"><span class="meta">@Repeatable(MapperScans.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MapperScan &#123;</span><br><span class="line">String[] value() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line">String[] basePackages() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line">Class&lt;?&gt;[] basePackageClasses() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line">Class&lt;? <span class="keyword">extends</span> <span class="title class_">Annotation</span>&gt; annotationClass() <span class="keyword">default</span> Annotation.class;</span><br><span class="line"><span class="comment">// ... ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重点关注一下@Import({MapperScannerRegistrar.class})，当@MapperScan被扫描加载时，会解析@Import注 解，从而加载指定的类，此处就是加载了MapperScannerRegistrar</p>
+<p>MapperScannerRegistrar实现了ImportBeanDefinitionRegistrar接口，Spring会自动调用 registerBeanDefinitions方法，该方法中又注册MapperScannerConfigurer类，而MapperScannerConfigurer类 作用是扫描Mapper，向容器中注册Mapper对应的MapperFactoryBean</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MapperScannerRegistrar</span> <span class="keyword">implements</span> <span class="title class_">ImportBeanDefinitionRegistrar</span>, </span><br><span class="line">ResourceLoaderAware &#123;</span><br><span class="line"><span class="comment">//默认执行registerBeanDefinitions方法</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(AnnotationMetadata annoMeta, AnnotationAttributes annoAttrs, </span></span><br><span class="line"><span class="params">BeanDefinitionRegistry registry, String beanName)</span> &#123;</span><br><span class="line"><span class="type">BeanDefinitionBuilder</span> <span class="variable">builder</span> <span class="operator">=</span> </span><br><span class="line">BeanDefinitionBuilder.genericBeanDefinition(MapperScannerConfigurer.class);</span><br><span class="line"><span class="comment">//... 省略其他代码 ...</span></span><br><span class="line"><span class="comment">//注册BeanDefinition</span></span><br><span class="line">registry.registerBeanDefinition(beanName, builder.getBeanDefinition());</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Spring与MyBatis注解方式整合有个重要的技术点就是@Import，第三方框架与Spring整合xml方式很多是凭借自 定义标签完成的，而第三方框架与Spring整合注解方式很多是靠@Import注解完成的。</p>
+<p>@Import可以导入如下三种类： </p>
+<ul>
+<li><p>普通的配置类 </p>
+</li>
+<li><p>实现ImportSelector接口的类 </p>
+</li>
+<li><p>实现ImportBeanDefinitionRegistrar接口的类</p>
+</li>
+</ul>
+<p>@Import导入实现了ImportSelector接口的类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.itheima&quot;)</span></span><br><span class="line"><span class="meta">@Import(&#123;MyImportSelector.class&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ApplicationContextConfig</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyImportSelector</span> <span class="keyword">implements</span> <span class="title class_">ImportSelector</span> &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> String[] selectImports(AnnotationMetadata annotationMetadata) &#123;</span><br><span class="line"><span class="comment">//返回要进行注册的Bean的全限定名数组</span></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>[]&#123;User2.class.getName()&#125;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ImportSelector接口selectImports方法的参数AnnotationMetadata代表注解的媒体数据，可以获得当前注解修饰 的类的元信息，例如：获得组件扫描的包名</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyImportSelector</span> <span class="keyword">implements</span> <span class="title class_">ImportSelector</span> &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> String[] selectImports(AnnotationMetadata annotationMetadata) &#123;</span><br><span class="line"><span class="comment">//获得指定类型注解的全部信息</span></span><br><span class="line">Map&lt;String, Object&gt; annotationAttributes = </span><br><span class="line">annotationMetadata.getAnnotationAttributes(ComponentScan.class.getName());</span><br><span class="line"><span class="comment">//获得全部信息中basePackages信息</span></span><br><span class="line">String[] basePackages = (String[]) annotationAttributes.get(<span class="string">&quot;basePackages&quot;</span>);</span><br><span class="line"><span class="comment">//打印结果是com.itheima</span></span><br><span class="line">System.out.println(basePackages[<span class="number">0</span>]);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>[]&#123;User2.class.getName()&#125;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>@Import导入实现ImportBeanDefinitionRegistrar接口的类，实现了该接口的类的registerBeanDefinitions方法 会被自动调用，在该方法内可以注册BeanDefinition</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyImportBeanDefinitionRegistrar</span> <span class="keyword">implements</span> <span class="title class_">ImportBeanDefinitionRegistrar</span> &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(AnnotationMetadata importingClassMetadata, </span></span><br><span class="line"><span class="params">BeanDefinitionRegistry registry)</span> &#123;</span><br><span class="line"><span class="comment">//使用给定的BeanDefinitionRegistry参数，手动注册BeanDefinition</span></span><br><span class="line"><span class="type">BeanDefinition</span> <span class="variable">beanDefinition</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RootBeanDefinition</span>();</span><br><span class="line">beanDefinition.setBeanClassName(<span class="string">&quot;com.itheima.pojo.User2&quot;</span>);</span><br><span class="line">registry.registerBeanDefinition(<span class="string">&quot;user2&quot;</span>,beanDefinition);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">知无涯</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/06/07/%E8%8D%89%E7%A8%BF/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84Spring%E5%BA%94%E7%94%A8/">http://example.com/2023/06/07/%E8%8D%89%E7%A8%BF/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84Spring%E5%BA%94%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">YunisTo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/7.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/05/27/%E5%9F%BA%E4%BA%8Exml%E7%9A%84Spring%E5%BA%94%E7%94%A8/" title="基于xml的Spring应用"><img class="cover" src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/7.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">基于xml的Spring应用</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/10021.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">知无涯</div><div class="author-info__description">永远善良，永远来日方长</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Yunis3056"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Yunis3056" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lyns3056@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84Spring%E5%BA%94%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">基于注解的Spring应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean%E5%9F%BA%E6%9C%AC%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91"><span class="toc-number">1.1.</span> <span class="toc-text">Bean基本注解开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91"><span class="toc-number">1.2.</span> <span class="toc-text">Bean依赖注入注解开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E8%87%AA%E5%AE%9A%E4%B9%89Bean%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91"><span class="toc-number">1.3.</span> <span class="toc-text">非自定义Bean注解开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean%E9%85%8D%E7%BD%AE%E7%B1%BB%E7%9A%84%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91"><span class="toc-number">1.4.</span> <span class="toc-text">Bean配置类的注解开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-%E9%85%8D%E7%BD%AE%E5%85%B6%E4%BB%96%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.5.</span> <span class="toc-text">Spring 配置其他注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring%E6%B3%A8%E8%A7%A3%E7%9A%84%E8%A7%A3%E6%9E%90%E5%8E%9F%E7%90%86"><span class="toc-number">1.6.</span> <span class="toc-text">Spring注解的解析原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%E6%95%B4%E5%90%88%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6"><span class="toc-number">1.7.</span> <span class="toc-text">Spring注解方式整合第三方框架</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/07/%E8%8D%89%E7%A8%BF/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84Spring%E5%BA%94%E7%94%A8/" title="基于注解的Spring应用"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于注解的Spring应用"/></a><div class="content"><a class="title" href="/2023/06/07/%E8%8D%89%E7%A8%BF/%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84Spring%E5%BA%94%E7%94%A8/" title="基于注解的Spring应用">基于注解的Spring应用</a><time datetime="2023-06-07T03:51:04.000Z" title="发表于 2023-06-07 11:51:04">2023-06-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/27/%E5%9F%BA%E4%BA%8Exml%E7%9A%84Spring%E5%BA%94%E7%94%A8/" title="基于xml的Spring应用"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于xml的Spring应用"/></a><div class="content"><a class="title" href="/2023/05/27/%E5%9F%BA%E4%BA%8Exml%E7%9A%84Spring%E5%BA%94%E7%94%A8/" title="基于xml的Spring应用">基于xml的Spring应用</a><time datetime="2023-05-26T16:52:38.000Z" title="发表于 2023-05-27 00:52:38">2023-05-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/27/%E8%8D%89%E7%A8%BF/%E5%9F%BA%E4%BA%8Exml%E7%9A%84Spring%E5%BA%94%E7%94%A8/" title="基于xml的Spring应用"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于xml的Spring应用"/></a><div class="content"><a class="title" href="/2023/05/27/%E8%8D%89%E7%A8%BF/%E5%9F%BA%E4%BA%8Exml%E7%9A%84Spring%E5%BA%94%E7%94%A8/" title="基于xml的Spring应用">基于xml的Spring应用</a><time datetime="2023-05-26T16:52:38.000Z" title="发表于 2023-05-27 00:52:38">2023-05-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/27/%E8%8D%89%E7%A8%BF/Spring%E6%A1%86%E6%9E%B6%E7%9A%84%E8%AF%9E%E7%94%9F/" title="Spring框架的诞生"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring框架的诞生"/></a><div class="content"><a class="title" href="/2023/05/27/%E8%8D%89%E7%A8%BF/Spring%E6%A1%86%E6%9E%B6%E7%9A%84%E8%AF%9E%E7%94%9F/" title="Spring框架的诞生">Spring框架的诞生</a><time datetime="2023-05-26T16:37:22.000Z" title="发表于 2023-05-27 00:37:22">2023-05-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/12/%E9%97%AE%E9%A2%98%E5%BD%92%E7%BA%B3/" title="问题归纳"><img src="https://cdn.jsdelivr.net/gh/Yunis3056/blogimage@main/img/7.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="问题归纳"/></a><div class="content"><a class="title" href="/2023/04/12/%E9%97%AE%E9%A2%98%E5%BD%92%E7%BA%B3/" title="问题归纳">问题归纳</a><time datetime="2023-04-12T06:51:29.000Z" title="发表于 2023-04-12 14:51:29">2023-04-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By 知无涯</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="8260486260" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false"> </div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
